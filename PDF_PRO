@@ -16,7 +16,7 @@ def general_logo():
     buffer.seek(0)
     return buffer
 
-def exportar_reporte_profesional(nombre_archivo, residuos):
+def exportar_reporte_profesional(nombre_archivo, Residuo):
     doc = SimpleDocTemplate(nombre_archivo, pagesize=letter)
     elementos = []
     estilos = getSampleStyleSheet()
@@ -28,9 +28,9 @@ def exportar_reporte_profesional(nombre_archivo, residuos):
     elementos.append(Table([[""]], colWidths=[500], rowHeights=[1], style=[("LINEBELOW", (0,0), (-1,-1), 1, colors.black)]))
     elementos.append(Spacer(1, 12))
 
-    data = [[""]]
-    for x in residuos:
-        data.append([])
+    data = [["Nombre", "Tipo", "Tratamiento", "Peso", "Recuperacion"]]
+    for r in Residuo:
+        data.append([r.nombre, r.tipo, r.tratamiento, r.peso, r.recuperacion])
 
     tabla = Table(data, colWidths=[100, 80, 80, 80, 80])
     tabla.setStyle(TableStyle([
