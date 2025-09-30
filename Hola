@@ -1,57 +1,58 @@
 import random 
 import csv
 def generar_csv_frutas(nombre_archivo, cantidad):
-    tipo = random.choice["Organico", "Inorganico", "Peligroso", "Reciclable"]
+    tipo = random.choice("Organico", "Inorganico", "Peligroso", "Reciclable")
     match tipo:
         case "Organico":
-            organico = [
+            caso = random.choice(
         "Cáscaras de frutas",
         "Restos de comida",
         "Hojas secas",
         "Bolsas de té",
         "Pan duro",
         "Cáscaras de huevo"
-        ]case "Inorganico":
-        inorganico = [
+            )
+        case "Inorganico":
+            caso = random.choice (
         "Escombros",
         "Cerámica rota",
         "Pañales desechables",
         "Colillas de cigarro",
         "Toallas sanitarias",
         "Servilletas sucias"
-        ]
-    case "Peligroso":
-        peligroso = [ 
+            )
+        case "Peligroso":
+            caso = random.choice( 
         "Pilas usadas",
         "Medicamentos vencidos",
         "Aerosoles vacíos",
         "Aceite de motor",
         "Disolventes químicos",
         "Lámparas fluorescentes"
-        ]
-    case "Reciclable":
-        reciclable = [
+            )
+        case "Reciclable":
+            caso = random.choice(
         "Botellas plásticas",
         "Latas de aluminio",
         "Cartón",
         "Papel limpio",
         "Vidrio",
-        ]
-    case _:
-        prin(Paila)
+        )
+        case _:
+            print("Paila")
 
-metodo_tratamiento = ["Reciclable", "Incineracion", "Compostaje", "Relleno sanitario "]
-peso = random.randint(1, 15)
-porcentaje = random.randint[1,100]
+    metodo_tratamiento = ("Reciclable", "Incineracion", "Compostaje", "Relleno sanitario ")
+    peso = random.randint(1, 15)
+    porcentaje = random.randint(1,100)
 
-with open(nombre_archivo, mode="w", newline="", encoding="utf-8") as archivo:
+    with open(nombre_archivo, mode="w", newline="", encoding="utf-8") as archivo:
         escritor = csv.writer(archivo)
-        escritor.writerow(["Residuo", "Tipo", "Metodo tratmiento", "Peso", "Porcentaje de recuperacion"])
+        escritor.writerow(["Residuo", "Tipo", "Metodo tratamiento", "Peso", "Porcentaje de recuperacion"])
         for i in range(cantidad):
             escritor.writerow([
                 f"Fruta{i+1}",
-                random.choice(residuo ),
                 tipo,
+                caso,
                 random.choice(metodo_tratamiento),
                 peso, 
                 porcentaje
