@@ -28,10 +28,10 @@ def text_lines(text: list[str], space: str = " ", width: int = WIDTH, margin: in
 
 def title_style(input, width: int = WIDTH, margin: int = MARGIN) -> list[str]:
     text = "".join(map(lambda str: str + " ", input))
-    return "\n".join(map(lambda str: str.center(width, " "), text_lines(text, space="  ")))
+    return "\n".join(map(lambda str: str.center(width, " "), text_lines(text, space="  ", width=width, margin=margin)))
 
 def default_text(input, width: int = WIDTH, margin: int = MARGIN) -> str:
-    return "\n".join(map(lambda str: str.center(width, " "), text_lines(input)))
+    return "\n".join(map(lambda str: str.center(width, " "), text_lines(input, width=width, margin=margin)))
 
 def separator(width: int = WIDTH) -> str:
     return "=" * width

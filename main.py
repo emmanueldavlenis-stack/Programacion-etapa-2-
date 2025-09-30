@@ -1,5 +1,7 @@
-from menu_utils import title_style, default_text, separator, options
+from menu_utils import title_style, default_text, separator, options, INPUT_CHAR
 from gestor_residuos import GestorResiduos
+import csv_utils
+import pdf_pro
 
 def main():
     gestor = GestorResiduos()
@@ -24,18 +26,27 @@ def main():
             case "2":
                 gestor.listar_tipo()
             case "3":
-                pass
+                gestor.listar_tratamiento()
             case "4":
-                pass
+                gestor.generar_resumen()
             case "5":
-                pass
+                gestor.exportar_resumen()
             case "6":
-                pass
+                print(default_text("Nombre del archivo CSV (sin .csv):"))
+                nombre = input(INPUT_CHAR + " ")
+                print(default_text("Cantidad de frutas a generar:"))
+                cantidad = int(input(INPUT_CHAR + " "))
+                csv_utils.generar_csv_residuos(nombre, cantidad)
             case "7":
-                pass
+                print(default_text("Nombre del archivo CSV a cargar (sin .csv):"))
+                nombre = input(INPUT_CHAR + " ")
+                csv_utils.cargar_residuos_desde_csv(nombre, gestor)
             case "8":
-                pass
+                print(default_text("Nombre del archivo PDF (sin .pdf):"))
+                nombre = input(INPUT_CHAR + " ")
+                pdf_pro.exportar_reporte_profesional(nombre, gestor)
             case "9":
+                print(default_text("\nHasta luego!"))
                 break
 
 if __name__ == "__main__":

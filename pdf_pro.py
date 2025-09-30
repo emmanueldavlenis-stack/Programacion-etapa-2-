@@ -8,7 +8,7 @@ from datetime import datetime
 
 def general_logo():
     img = PILImage.new("RGB", (100, 100), color=(255, 255, 255))
-    draw = ImageDraw.draw(img)
+    draw = ImageDraw.Draw(img)
     draw.ellipse((10, 10, 90, 90), fill=(0, 102, 204))
     draw.text((30, 40), "FR", fill=(255, 255, 255))
     buffer = BytesIO()
@@ -16,8 +16,8 @@ def general_logo():
     buffer.seek(0)
     return buffer
 
-def exportar_reporte_profesional(nombre_archivo, Residuo):
-    doc = SimpleDocTemplate(nombre_archivo, pagesize=letter)
+def exportar_reporte_profesional(nombre_archivo, gestor):
+    doc = SimpleDocTemplate(nombre_archivo + ".pdf", pagesize=letter)
     elementos = []
     estilos = getSampleStyleSheet()
 
@@ -29,7 +29,7 @@ def exportar_reporte_profesional(nombre_archivo, Residuo):
     elementos.append(Spacer(1, 12))
 
     data = [["Nombre", "Tipo", "Tratamiento", "Peso", "Recuperacion"]]
-    for r in Residuo:
+    for r in gestor.residuos:
         data.append([r.nombre, r.tipo, r.tratamiento, r.peso, r.recuperacion])
 
     tabla = Table(data, colWidths=[100, 80, 80, 80, 80])
@@ -48,4 +48,5 @@ def exportar_reporte_profesional(nombre_archivo, Residuo):
         canvas.restoreState()
 
     doc.build(elementos, onFirstPage=pie_de_pagina, onLaterPages=pie_de_pagina)
-    print(f"Reporte profesional exportado como '{nombre_archivo}'")
+    print(f"Reporte profesional exportado en '{nombre_archivo + ".pdf"}'")
+    input("\nPresione enter para continuar...")
