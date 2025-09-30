@@ -16,8 +16,8 @@ def general_logo():
     buffer.seek(0)
     return buffer
 
-def exportar_reporte_profesional():
-    doc = SimpleDocTemplate(pagesize=letter)
+def exportar_reporte_profesional(nombre_archivo, residuos):
+    doc = SimpleDocTemplate(nombre_archivo, pagesize=letter)
     elementos = []
     estilos = getSampleStyleSheet()
 
@@ -29,11 +29,23 @@ def exportar_reporte_profesional():
     elementos.append(Spacer(1, 12))
 
     data = [[""]]
-    for x in x:
+    for x in residuos:
         data.append([])
 
     tabla = Table(data, colWidths=[100, 80, 80, 80, 80])
     tabla.setStyle(TableStyle([
-        ("BACKGROUND", (0,0), (-1,-0), colors.lightblue),
+        ("BACKGROUND", (0,0), (-1,0), colors.lightblue),
         ("GRID", (0,0), (1,-1), 0.5, colors.grey),
+        ("ALIGN", (0,0), (1,-1), "CENTER"),
+        ("FONTNAME", (0,0), (-1,0), "Helvetica-Bold"),
     ]))
+    elementos.append(tabla)
+
+    def pie_de_pagina(canvas, doc):
+        canvas.saveState()
+        canvas.setFont("Helvetica", 9)
+        canvas.drawString(500, 20, f"Pagina {doc.page}")
+        canvas.restoreState()
+
+    doc.build(elementos, onFirstPage=pie_de_pagina, onLaterPages=pie_de_pagina)
+    print(f"Reporte profesional exportado como '{nombre_archivo}'")
