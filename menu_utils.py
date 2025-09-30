@@ -1,6 +1,6 @@
 WIDTH = 50
 MARGIN = 5
-input_char = ">"
+INPUT_CHAR = ">"
 
 def text_lines(text: list[str], space: str = " ", width: int = WIDTH, margin: int = MARGIN) -> list[str]: 
     max_len = width - margin * 2
@@ -40,4 +40,4 @@ def options(*options: str, center: bool = True) -> str:
     for i, option in enumerate(options):
         text = f"{i + 1}. {option}"
         print(text.center(WIDTH, " ") if center else text)
-    return input(input_char + " ")
+    return input(INPUT_CHAR + " ")
