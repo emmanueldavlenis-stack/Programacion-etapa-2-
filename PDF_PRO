@@ -1,0 +1,39 @@
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, Image
+from reportlab.lib import colors
+from reportlab.lib.styles import getSampleStyleSheet
+from io import BytesIO
+from PIL import Image as PILImage, ImageDraw
+from datetime import datetime
+
+def general_logo():
+    img = PILImage.new("RGB", (100, 100), color=(255, 255, 255))
+    draw = ImageDraw.draw(img)
+    draw.ellipse((10, 10, 90, 90), fill=(0, 102, 204))
+    draw.text((30, 40), "FR", fill=(255, 255, 255))
+    buffer = BytesIO()
+    img.save(buffer, format="PNG")
+    buffer.seek(0)
+    return buffer
+
+def exportar_reporte_profesional():
+    doc = SimpleDocTemplate(pagesize=letter)
+    elementos = []
+    estilos = getSampleStyleSheet()
+
+    logo =  Image(general_logo(), width=50, height=50)
+    encabezado = Paragraph(f"<b>Reporte de Residuos Solidos</b><br/>{datetime.now().strftime('%d/%m/%Y %H:%M')}", estilos["Title"])
+    elementos.append(Table([[logo, encabezado]], colWidths=[60, 440]))
+    elementos.append(Spacer(1, 12))
+    elementos.append(Table([[""]], colWidths=[500], rowHeights=[1], style=[("LINEBELOW", (0,0), (-1,-1), 1, colors.black)]))
+    elementos.append(Spacer(1, 12))
+
+    data = [[""]]
+    for x in x:
+        data.append([])
+
+    tabla = Table(data, colWidths=[100, 80, 80, 80, 80])
+    tabla.setStyle(TableStyle([
+        ("BACKGROUND", (0,0), (-1,-0), colors.lightblue),
+        ("GRID", (0,0), (1,-1), 0.5, colors.grey),
+    ]))
