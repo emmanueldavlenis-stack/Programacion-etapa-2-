@@ -1,1 +1,36 @@
+import random 
+def generar_csv_frutas(nombre_archivo, cantidad):
+    residuo= []
+    tipo = ["Organico", "Inorganico", "Peligroso, Reciclable"]
+    metodo_tratamiento = ["Reciclable", "Incineracion", "Compostaje", "Relleno sanitario "]
+    peso = random.randint(1, 15)
+    porcentaje = random.randint[1,100]
+    with open(nombre_archivo, mode="w", newline="", encoding="utf-8") as archivo:
+        escritor = csv.writer(archivo)
+        escritor.writerow(["Residuo", "Tipo", "Metodo tratmiento", "Peso", "Porcentaje de recuperacion"])
+        for i in range(cantidad):
+            escritor.writerow([
+                f"Fruta{i+1}",
+                random.choice(residuo ),
+                random.choice(tipo),
+                random.choice(metodo_tratamiento),
+                peso, 
+                porcentaje
+            ])
 
+def cargar_frutas_desde_csv(nombre_archivo, gestor):
+    with open(nombre_archivo, mode="r", encoding="utf-8") as archivo:
+        lector = csv.DictReader(archivo)
+        for fila in lector:
+            try:
+                fruta = Fruta(
+                    fila["nombre"],
+                    fila["color"],
+                    fila["cosecha_mes"],
+                    int(fila["maduracion_dias"]),
+                    float(fila["porcentaje_cultivo"])
+                )
+                gestor.frutas.append(fruta)
+            except Exception as e:
+                print(f"Error en fila {fila}: {e}")
+""")
