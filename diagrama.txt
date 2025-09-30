@@ -1,0 +1,61 @@
+INICIO
+ |
+ v
+ARCHIVO PRINCIPAL: main.py
+ |
+ |->Opción 1: Registrar residuo
+ |  Archivo: gestor_residuos.py
+ |  Clase: GestorResiduos
+ |  Método: registrar_residuo()
+ |  Entrada: Nombre, Tipo, Tratamiento, Peso, Recuperacion
+ |  Validacion: if + assert
+ |  Accion: Crear objeto residuo y agregar a la lista
+ |  Salida: Residuo guardado
+ |
+ |->Opción 2: Listar residuos por tipo
+ |  Archivo: gestor_residuos.py
+ |  Clase: GestorResiduos
+ |  Método: listar_tipo()
+ |  Entrada: tipo
+ |  Accion: Filtrar lista y mostrar
+ |
+ |->Opción 3: Listar residuos por tratamiento
+ |  Archivo: gestor_residuos.py
+ |  Clase: GestorResiduos
+ |  Método: listar_tratamiento()
+ |  Entrada: tratamiento
+ |  Accion: Filtrar lista y mostrar
+ |
+ |->Opción 4: Generar resumen estadístico
+ |  Archivo: gestor_residuos.py
+ |  Clase: GestorResiduos
+ |  Método: generar_resumen()
+ |  Accion: Calcular total, promedios
+ |  Salida: impresion en consola
+ |
+ |->Opción 5: Exportar resumen (txt/pdf)
+ |  Archivo: gestor_residuos.py
+ |  Clase: GestorResiduos
+ |  Método: exportar_resumen()
+ |  Accion: Guardar archivo
+ |
+ |->Opción 6: Generar .csv con residuos simulados
+ |  Archivo: csv_utils.py
+ |  Función: generar_csv_residuos()
+ |  Entrada: Nombre del archivo, Cantidad
+ |  Acción: Crear archivo con datos aleatorios
+ |
+ |->Opción 7: Cargar residuos desde CSV
+ |  Archivo: csv_utils.py
+ |  Función: cargar_residuo_csv()
+ |  Entrada: Nombre del archivo
+ |  Acción: Leer archivo y mostrar datos
+ |
+ |->Opción 8: Exportar reporte profesional (PDF)
+ |  Archivo: reporte_pdf.py
+ |  Función: exportar_reporte_profesional()
+ |  Acción: Generar PDF con logo, encabezado, tabla y pie de pagina
+ |
+ |->Opción 9: Salir
+ |  Archivo: main.py
+ |  Acción: mensaje de despedida
